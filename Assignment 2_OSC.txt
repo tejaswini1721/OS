@@ -1,0 +1,342 @@
+1. Write a script to create 10 directories, say a1,a2,...,a10
+
+->mkdir a1,a2,a3,a4,a5,a6,a7,a8,a9,a10
+
+
+*********************************************************************************
+2) Write a menu based script to perform following string operations
+a) To find length of a string
+c) Copying string
+d) Concatenation of strings
+e) Compare two strings
+f) Reversing a string
+
+
+#Write A Script To Perform Following String Operations Using Menu: 
+#    1)COMPARE TWO STRINGS. 
+#	2)JOIN TWO STRINGS. 
+#	3)FIND THE LENGTH OF A GIVEN STRING. 
+#	4)OCCURRENCE OF CHARACTER AND WORDS 
+#	5)REVERSE THE STRING.         
+#
+clear
+echo "==================== AVAILABLE CHOICES ========================="
+echo "1. Compare two strings"
+echo "2. Join two strings"
+echo "3. Find length of a given string"
+echo "4. Occurance of character and word in a string"
+echo "5. Reverse the string"
+echo "E. Exit"
+echo "================================================================"
+
+echo "Enter your choice :"
+read choice
+while [ "$choice" != "e" -o "$choice" != "E" ]
+do
+	case $choice in
+	"1")
+		echo -n "Enter first string :"	
+		read firststr
+		echo -n "Enter second string :"	
+		read secondstr
+		#if [ "$firststr" = "$secondstr" ] #FOR CASE SENSITIVE CHECK
+		if [ `echo $firststr | grep -ci $secondstr` -gt 0 ] #FOR CASE INSENSITIVE CHECK
+		then
+			echo "Both strings are same"
+		else
+			echo "Both strings are different"
+		fi
+	;;	
+	"2")
+		echo -n "Enter first string :"	
+		read firststr
+		echo -n "Enter second string :"	
+		read secondstr
+		echo "Joining of two string is : $firststr$secondstr"
+	;;
+	"3")
+		echo -n "Enter any string :"	
+		read string
+		length=$(echo $string | wc -c)
+		length=$(expr $length - 1)
+		echo "Length of string is "$length
+	;;
+	"4")
+		echo "Enter any string :"	
+		string=$(cat) #ctrl + d to terminate
+		characters=$(echo $string | wc -c)
+		lines=$(echo "$string" | wc -l)
+		echo "No of characters : $characters"
+		echo "No of lines : $lines"
+ 
+	;;
+	"5")
+		echo "Enter any string :"	
+		read string
+		#echo $(echo $string | rev ) 1-solution
+		length=$(echo $string | wc -c)
+		length=$(expr $length - 1)
+		i=$length
+		s=""
+		while [ $i -gt 0 ]
+		do
+			 s=$s$(echo $string | cut -c$i)
+			i=$(expr $i - 1)
+		done
+		echo "Reverse of the string is $s"
+	;;
+	[eE])
+		exit;
+	;;
+	*)
+		echo "Invalid choice"
+	;;
+	esac
+	read temp
+	clear
+	echo "==================== AVAILABLE CHOICES ========================="
+	echo "1. Compare two strings"
+	echo "2. Join two strings"o
+	echo "3. Find length of a given string"
+	echo "4. Occurance of character and word in a string"
+	echo "5. Reverse the string"
+	echo "E. Exit"
+	echo "================================================================"
+	echo "Enter your choice :"
+	read choice
+done
+****************************************************************************************
+3.Write a shell script to rename all files in the current directory with numeric continuous value
+
+->
+*************************************************************************************
+
+4. Write a script that print environment variable(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+
+->  echo $HOME, echo $HISTORY,  echo $LOGNAME, echo $PATH,  echo $TERM,  echo $SHELL
+
+***************************************************************************************
+
+5. Write a shell script to print all files permissions in current directory(Not name or other details)(Use cut commands)
+
+-> 
+*****************************************************************************************
+6. Write a shell script to print all files permissions and name of file
+
+-> ls -al
+**********************************************************************************************
+7.Write a shell script to print all files name and size greater than 5K
+->find -type f -name "*.sh"
+ ->size +5k -ls
+*******************************************************************************************
+
+1)Write a shell script to validate password strength. Here are a few assumptions for the password string.
+Length  – minimum of 8 characters.
+Contain both alphabet and number.
+Include both the small and capital case letters.
+If the password doesn’t comply with any of the above conditions, then the script should report it as a <Weak Password>.
+Ans.
+
+read -p "please enter password:" pass
+count=`echo ${#pass}`
+if [[ $count -ne 8 ]];then
+echo "Password length should be 8 charactore"
+exit 1;
+fi
+echo $count | grep "[A-Z]" | grep "[a-z]" | grep "[0-9]" | grep "[@#$%^&*]"
+
+if [[ $? -ne 0 ]];then
+
+echo "Password Must contain upparcase ,lowecase,number and special charactor"
+exit 2;
+
+fi
+**********************************************************************************************************
+10)Write a shell script to print the reverse of an input number.
+Ans.
+echo "Enter a number"
+read n
+sd=0
+rev=0
+
+while [ $n -gt 0 ]
+do
+    sd=$(( $n % 10 ))
+    rev=`expr $rev \* 10 + $sd` 
+    n=$(( $n / 10 ))
+done
+
+echo "Reverse number of entered digit is $rev"
+**********************************************************************************************************
+9)
+Ans.
+
+// reading a string
+
+// using via user input
+read - p "Enter string:" string 
+// getting the length of given string 
+ len 
+ = $ 
+{
+#string 
+}
+
+// looping for reversing a string
+
+// initialize i=len-1 for reversing a string and run till i=0
+
+// printing in the reverse order of the given string
+
+for ((i = $len - 1; i >= 0; i--)) 
+
+ do
+
+  // "${string:$i:1}"extract single single character from string. 
+
+reverse = "$reverse${string:$i:1}" done 
+
+echo "$reverse"
+**********************************************************************************
+8)Write a shell script to reverse the single strings. 
+Ans.
+input="$1"
+reverse=""
+ 
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do 
+	reverse="$reverse${input:$i:1}"
+done
+ 
+echo "$reverse"
+******************************************************************************************
+7) Write a script to generate Fibonacci series.
+Ans.
+echo "Program to Find Fibonacci Series"
+  echo "How many number of terms to be generated ?"
+  read n
+  x=0
+  y=1
+  i=2
+  echo "Fibonacci Series up to $n terms :"
+  echo "$x"
+  echo "$y"
+  while [ $i -lt $n ]
+  do
+      i=`expr $i + 1 `
+      z=`expr $x + $y `
+      echo "$z"
+      x=$y
+      y=$z
+  done
+*************************************************************************************
+6)Write a program to find sum and product of two no.s using 
+	a) let 
+	b)expr
+	c)bc	
+Ans.
+expr-->
+echo "Enter two numbers"
+read num1 num2
+sum = 'expr $num1 + $num2'
+echo "The sum is = $sum"
+
+bc-->
+if [ $# -eq 2 ] then 
+ 
+#If both are integers , then  
+echo $(( 1 + 2 )) 
+ 
+#if a and b are float and you want answer in #float 3 decimal places, you could use 
+bc <<<  echo “scale=3;$1 + $2” 
+else 
+echo "command line arguments are missing" 
+fi 
+******************************************************************************
+7)Write a program to check wahether given no.is even or odd
+Ans
+#Bash Script to check whether a number is even or odd
+read -p "Enter a number: " number
+if [ $((number%2)) -eq 0 ]
+then
+  echo "Number is even."
+else
+  echo "Number is odd."
+fi
+********************************************************************************8
+4)Write a script to find biggest of three no.s
+Ans.
+a)echo "Enter Num1"
+read num1
+echo "Enter Num2"
+read num2
+echo "Enter Num3"
+read num3
+
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]
+then
+    echo $num1
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]
+then
+    echo $num2
+else
+    echo $num3
+fi
+
+b)To find avg of 3 no.s, read no.s from keyboard
+Ans
+echo "Please enter your first number: "
+read a
+echo "Second number: "
+read b
+echo "Third number: "
+read c
+
+avg=$(echo $sum / 5 | bc -l ) 
+
+echo "The average of these numbers is: " $avg
+*****************************************************************
+2)
+Ans.
+echo "enter a number"
+read n
+case $n in
+1) echo "Sunday" ;;
+2) echo "Monday" ;;
+3) echo "Tuesday" ;;
+4) echo "Wednesday" ;;
+5) echo "Thursday" ;;
+6) echo "Friday" ;;
+7) echo "Saturday" ;;
+*) echo "enter value between 1 to 7" ;;
+esac
+*************************************************************
+1). Write a script To check given year is leap or not.
+Ans.
+echo "Enter the year"
+ 
+read year
+ 
+if [ $year -ge 1000 -a $year -le 9999 ];
+ 
+then
+ 
+if [ `expr $year % 4` -eq 0 ]
+ 
+then
+ 
+echo "The year $year is a leap year"
+ 
+else
+ 
+echo "The year $year is not a leap year"
+ 
+fi
+ 
+fi
+*****************************************************************************
+
+
+
+
