@@ -1,0 +1,94 @@
+Head of a Text File #1
+In this challenge, we practice using the head command to display the first lines of a text file.
+Display the first  lines of an input file.
+Input Format
+A text file.
+Output Format
+Output the first  lines of the given text file.
+-->
+head -20
+____________________________________________________________________________________________________
+Middle of a Text File
+Display the lines (from line number 12 to 22, both inclusive) of a given text file.
+-->  head -n 22 | -n 11
+____________________________________________________________________________________________________
+Tail of a Text File #2
+In this challenge, we practice using the tail command to display the last  characters of a text file.
+Display the last  characters of an input file.
+-->    tail -c 20
+____________________________________________________________________________________________________
+'Tr' Command #3
+In a given fragment of text, replace all sequences of multiple spaces with just one space.
+-->  tr -s ' '
+____________________________________________________________________________________________________
+Sort Command #4
+You are given a file of text, where each line contains a number (which may be either an integer or have decimal places). There will be no extra characters other than the number or the newline at the end of each line. Sort the lines in descending order - - such that the first line holds the (numerically) largest number and the last line holds the (numerically) smallest number.
+--> sort -n -r
+____________________________________________________________________________________________________
+Sort Command #5
+You are given a file of text,which contains temperature information about American cities, in TSV (tab-separated) format. The first column is the name of the city and the next four columns are the average temperature in the months of Jan, Feb, March and April (see the sample input). Rearrange the rows of the table in descending order of the values for the average temperature in January
+--> sort -n -k2 -r -t $'\t'
+____________________________________________________________________________________________________
+'Uniq' command #4
+Given a text file, display only those lines which are not followed or preceded by identical replications.
+--> uniq -u
+____________________________________________________________________________________________________
+Read in an Array
+Given a list of countries, each on a new line, your task is to read them into an array and then display the entire array, with a space between each of the countries' names.
+
+-->i=1;
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+echo "${a[@]}";
+
+____________________________________________________________________________________________________
+Slice an Array
+Given a list of countries, each on a new line, your task is to read them into an array. Then slice the array and display only the elements lying between positions  and , both inclusive. Indexing starts from from .
+
+-->
+i=0;j=0;
+while read line
+do 
+    if [ $i -gt 2 ] && [ $i -le 7 ]
+    then
+        a[j]=$line;
+        j=$((j+1));
+    fi
+    i=$((i+1));
+done
+echo "${a[@]}";
+____________________________________________________________________________________________________
+Filter an Array with Patterns
+We now transition to some basic examples of bash scripting for the purpose of text processing and data munging. In this challenge, we practice reading and filtering an array.
+-->
+i=1;
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+i=1;
+declare -a filtered=( ${a[@]/*[aA]*/} );
+echo "${filtered[@]}";
+__________________________________________________________________________________________________________
+Remove the First Capital Letter from Each Element
+Ans.
+readarray ary 
+echo ${ary[@]/[A-Z]/.}
+_____________________________________________________________________________________________________________________
+Given a list of countries, each on a new line, your task is to read them into an array and then display the count of elements in that array.
+Ans.
+i=0
+while read line;do
+    i=$((i+1))
+    done
+    echo $i
+____________________________________________________________________________________________________________________________
+Given a list of countries, each on a new line, your task is to read them into an array. Then, concatenate the array with itself (twice) - so that you have a total of three repetitions of the original array - and then display the entire concatenated array, with a space between each of the countries' names.
+
+Ans.
+X=$(xargs)
+echo $X $X $X

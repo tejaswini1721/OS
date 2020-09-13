@@ -1,0 +1,92 @@
+Write a bash script which does just one thing: saying "HELLO".
+Ans. echo HELLO
+______________________________________________________________________________________________
+Your task is to use for loops to display only odd natural numbers from  to .
+Ans.  
+for ((i=1;i<=99;i=i+2))
+do
+echo "$i";
+done
+_________________________________________________________________________________________
+
+Write a Bash script which accepts  as input and displays a greeting: "Welcome (name)"
+Ans.
+read name 
+echo "Welcome $name" 
+___________________________________________________________________________________________
+Use a for loop to display the natural numbers from  to .
+Ans.
+
+for i in {1..50}
+do
+echo $i
+done
+___________________________________________________________________________________________
+Given two integers,  and , find their sum, difference, product, and quotient.
+Ans.
+read x;
+read y;
+echo $((x+y));
+echo $((x-y));
+echo $((x*y));
+echo $((x/y));
+__________________________________________________________________________________________________
+Given two integers,  and , identify whether  or  or .
+
+Exactly one of the following lines:
+- X is less than Y
+- X is greater than Y
+- X is equal to Y
+
+Ans.
+read x
+ if [ "$x" == "y" ]
+ then
+  echo "YES"
+ elif [  "$x" == "Y"  ]
+ then
+    echo "YES"
+ else 
+    echo "NO"
+  fi
+____________________________________________________________________________________________________
+
+Given three integers (, , and ) representing the three sides of a triangle, identify whether the triangle is scalene, isosceles, or equilateral.
+
+If all three sides are equal, output EQUILATERAL.
+Otherwise, if any two sides are equal, output ISOSCELES.
+Otherwise, output SCALENE.
+
+Ans.
+
+read x;
+read y;
+read z;
+if [ $x -eq $y ] && [ $y -eq $z ]
+then
+echo "EQUILATERAL";
+elif [ $x -ne $y ] && [ $x -ne $z ] && [ $y -ne $z ]
+then
+echo "SCALENE";
+else
+echo "ISOSCELES";
+fi
+________________________________________________________________________________________________________________________
+A mathematical expression containing +,-,*,^, / and parenthesis will be provided. Read in the expression, then evaluate it. Display the result rounded to  decimal places.
+Ans.
+read line;
+printf "%.3f" $(echo "scale = 4; $line" | bc);
+_______________________________________________________________________________________________________________________
+Given  integers, compute their average, rounded to three decimal places.
+Ans.
+read t;
+sum=0;
+for((i=0;i<t;i++))
+do
+read num;
+sum=$((sum+num));
+done
+printf "%.3f" $(echo "scale=4; $sum / $t " | bc );
+_______________________________________________________________________________________________________________________
+
+
